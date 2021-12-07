@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -13,29 +14,88 @@
         android:text="Hello World!"
         android:textSize="26sp"
         android:textStyle="bold"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_activity_button" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/main_activity_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Button"
-        app:layout_constraintTop_toBottomOf="@id/main_activity_text_view"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_presenter_button"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toTopOf="@id/main_activity_presenter_button"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_text_view" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/main_activity_presenter_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Presenter_button"
-        app:layout_constraintTop_toBottomOf="@id/main_activity_button"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_1_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"/>
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_button" />
 
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/main_activity_counter_1_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Counter 1"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_1_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_presenter_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/main_activity_counter_1_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_2_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_counter_1_text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/main_activity_counter_2_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Counter 2"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_2_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_counter_1_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/main_activity_counter_2_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_3_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_counter_2_text" />
+
+    <androidx.appcompat.widget.AppCompatTextView
+        android:id="@+id/main_activity_counter_3_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Counter 3"
+        app:layout_constraintBottom_toTopOf="@id/main_activity_counter_3_button"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_counter_2_button" />
+
+    <androidx.appcompat.widget.AppCompatButton
+        android:id="@+id/main_activity_counter_3_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="0"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/main_activity_counter_3_text" />
 </androidx.constraintlayout.widget.ConstraintLayout>

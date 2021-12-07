@@ -10,6 +10,7 @@ class MainActivity : AppCompatActivity(), GreetingView {
 
     private lateinit var bind: ActivityMainBinding
     private val presenter: MyPresenter = MyPresenter()
+    private val counters = mutableListOf(0, 0, 0)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -24,6 +25,18 @@ class MainActivity : AppCompatActivity(), GreetingView {
         }
         bind.mainActivityPresenterButton.setOnClickListener {
             presenter.onButtonClick()
+        }
+        bind.mainActivityCounter1Button.setOnClickListener {
+            val newValue = ((++counters[0]).toString())
+            bind.mainActivityCounter1Button.text = newValue
+        }
+        bind.mainActivityCounter2Button.setOnClickListener {
+            val newValue = ((++counters[1]).toString())
+            bind.mainActivityCounter2Button.text = newValue
+        }
+        bind.mainActivityCounter3Button.setOnClickListener {
+            val newValue = ((++counters[2]).toString())
+            bind.mainActivityCounter3Button.text = newValue
         }
     }
 
