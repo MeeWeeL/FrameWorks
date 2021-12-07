@@ -14,6 +14,7 @@ class MainActivity : AppCompatActivity(), GreetingView, CountersView {
     private lateinit var bind: ActivityMainBinding
     private val presenter: MyPresenter = MyPresenter()
     private val countersPresenter = CountersPresenter(this)
+    private lateinit var listener: View.OnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -21,10 +22,9 @@ class MainActivity : AppCompatActivity(), GreetingView, CountersView {
         setContentView(bind.root)
         presenter.onAttach(this)
 
-        val listener = View.OnClickListener {
-            countersPresenter.counterClick(it.id)
-        }
-        with (bind) {
+        setListener()
+
+        with(bind) {
             mainActivityButton.setOnClickListener {
                 (if (mainActivityTextView.text.equals("First text")) "Second text" else "First text")
                     .also { mainActivityTextView.text = it }
@@ -47,6 +47,17 @@ class MainActivity : AppCompatActivity(), GreetingView, CountersView {
             0 -> bind.mainActivityCounter1Button.text = text
             1 -> bind.mainActivityCounter2Button.text = text
             2 -> bind.mainActivityCounter3Button.text = text
+        }
+    }
+
+    private fun setListener() {
+        listener = View.OnClickListener {
+            val id = when (it.id) {
+                R.id.main_activity_counter_1_button -> 0
+                R.id.main_activity_counter_2_button -> 1
+                else -> 2
+            }
+            countersPresenter.counterClick(id)
         }
     }
 }
