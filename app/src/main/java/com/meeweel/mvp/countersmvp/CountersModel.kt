@@ -4,7 +4,7 @@ class CountersModel(private val mapper: EnumMapper) {
 
     private val counters = mutableListOf(0, 0, 0)
 
-    private fun getCurrent(enum: ButtonTypeEnum): Int {
+    fun getCurrent(enum: ButtonTypeEnum): Int {
         val index = mapper.mapEnumToIndex(enum)
         return counters[index]
     }

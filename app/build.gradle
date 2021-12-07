@@ -1,6 +1,7 @@
 plugins {
     id 'com.android.application'
     id 'kotlin-android'
+    id 'kotlin-kapt'
 }
 
 android {
@@ -10,7 +11,7 @@ android {
     defaultConfig {
         applicationId "com.meeweel.mvp"
         minSdkVersion 23
-        targetSdkVersion 30
+        targetSdk 30
         versionCode 1
         versionName "1.0"
 
@@ -36,6 +37,12 @@ android {
 }
 
 dependencies {
+
+    // Moxy
+    implementation "com.github.moxy-community:moxy:2.1.2"
+    kapt "com.github.moxy-community:moxy-compiler:2.1.2"
+    implementation "com.github.moxy-community:moxy-ktx:2.1.2"
+    implementation "com.github.moxy-community:moxy-androidx:2.1.2"
 
     implementation "org.jetbrains.kotlin:kotlin-stdlib:$kotlin_version"
     implementation 'androidx.core:core-ktx:1.7.0'

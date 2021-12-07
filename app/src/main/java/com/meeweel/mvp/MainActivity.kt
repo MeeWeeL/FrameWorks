@@ -1,8 +1,8 @@
 package com.meeweel.mvp
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import moxy.MvpAppCompatActivity
 import com.meeweel.mvp.countersmvp.ButtonTypeEnum
 import com.meeweel.mvp.countersmvp.ButtonUiModel
 import com.meeweel.mvp.countersmvp.CountersPresenter
@@ -10,13 +10,16 @@ import com.meeweel.mvp.countersmvp.CountersView
 import com.meeweel.mvp.databinding.ActivityMainBinding
 import com.meeweel.mvp.mvp.GreetingView
 import com.meeweel.mvp.mvp.MyPresenter
+import moxy.ktx.moxyPresenter
 import java.lang.NullPointerException
 
-class MainActivity : AppCompatActivity(), GreetingView, CountersView {
+class MainActivity : MvpAppCompatActivity(R.layout.activity_main), GreetingView, CountersView {
 
+    private val countersPresenter by moxyPresenter {
+        CountersPresenter()
+    }
     private lateinit var bind: ActivityMainBinding
     private val presenter: MyPresenter = MyPresenter()
-    private val countersPresenter = CountersPresenter(this)
     private lateinit var listener: View.OnClickListener
 
     override fun onCreate(savedInstanceState: Bundle?) {
