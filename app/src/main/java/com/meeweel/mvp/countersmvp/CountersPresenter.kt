@@ -2,10 +2,12 @@ package com.meeweel.mvp.countersmvp
 
 class CountersPresenter(private val view: CountersView) {
 
-    private val model = CountersModel()
+    private val mapper = EnumMapper()
+    private val model = CountersModel(mapper)
 
-    fun counterClick(id: Int) {
-        val nextValue = model.next(id)
-        view.setButton(id, nextValue.toString())
+    fun counterClick(type: ButtonTypeEnum) {
+        val nextValue = model.next(type)
+        val uiModel = ButtonUiModel(type, nextValue.toString())
+        view.setButtonText(uiModel)
     }
 }

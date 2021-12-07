@@ -1,18 +1,17 @@
 package com.meeweel.mvp.countersmvp
 
-class CountersModel {
+class CountersModel(private val mapper: EnumMapper) {
+
     private val counters = mutableListOf(0, 0, 0)
 
-    private fun getCurrent(index: Int): Int {
+    private fun getCurrent(enum: ButtonTypeEnum): Int {
+        val index = mapper.mapEnumToIndex(enum)
         return counters[index]
     }
 
-    fun next(index: Int): Int {
+    fun next(enum: ButtonTypeEnum): Int {
+        val index = mapper.mapEnumToIndex(enum)
         counters[index]++
-        return getCurrent(index)
-    }
-
-    fun set(index: Int, value: Int) {
-        counters[index] = value
+        return getCurrent(enum)
     }
 }

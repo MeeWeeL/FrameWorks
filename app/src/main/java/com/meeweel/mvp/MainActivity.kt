@@ -3,11 +3,14 @@ package com.meeweel.mvp
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import com.meeweel.mvp.countersmvp.ButtonTypeEnum
+import com.meeweel.mvp.countersmvp.ButtonUiModel
 import com.meeweel.mvp.countersmvp.CountersPresenter
 import com.meeweel.mvp.countersmvp.CountersView
 import com.meeweel.mvp.databinding.ActivityMainBinding
 import com.meeweel.mvp.mvp.GreetingView
 import com.meeweel.mvp.mvp.MyPresenter
+import java.lang.NullPointerException
 
 class MainActivity : AppCompatActivity(), GreetingView, CountersView {
 
@@ -42,22 +45,24 @@ class MainActivity : AppCompatActivity(), GreetingView, CountersView {
         bind.mainActivityPresenterButton.text = greeting
     }
 
-    override fun setButton(index: Int, text: String) {
-        when (index) {
-            0 -> bind.mainActivityCounter1Button.text = text
-            1 -> bind.mainActivityCounter2Button.text = text
-            2 -> bind.mainActivityCounter3Button.text = text
+    override fun setButtonText(model: ButtonUiModel) {
+        val newValue = model.value
+        when (model.index) {
+            ButtonTypeEnum.FIRST_BUTTON -> bind.mainActivityCounter1Button.text = newValue
+            ButtonTypeEnum.SECOND_BUTTON -> bind.mainActivityCounter2Button.text = newValue
+            ButtonTypeEnum.THIRD_BUTTON -> bind.mainActivityCounter3Button.text = newValue
         }
     }
 
     private fun setListener() {
         listener = View.OnClickListener {
-            val id = when (it.id) {
-                R.id.main_activity_counter_1_button -> 0
-                R.id.main_activity_counter_2_button -> 1
-                else -> 2
+            val type = when (it.id) {
+                R.id.main_activity_counter_1_button -> ButtonTypeEnum.FIRST_BUTTON
+                R.id.main_activity_counter_2_button -> ButtonTypeEnum.SECOND_BUTTON
+                R.id.main_activity_counter_3_button -> ButtonTypeEnum.THIRD_BUTTON
+                else -> throw NullPointerException("Error")
             }
-            countersPresenter.counterClick(id)
+            countersPresenter.counterClick(type)
         }
     }
 }
